@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KiwiBike4RentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BIKE">
+    <Key>
+      <PropertyRef Name="BikeID" />
+    </Key>
+    <Property Name="BikeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="Int32" Nullable="false" />
+    <Property Name="RentalPrice" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LifeTime" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturedYear" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Accessories" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rentedDate" Type="DateTime" Precision="0" />
+    <Property Name="dueBackDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MODEL1" Relationship="Self.BikeFKModel" FromRole="BIKE" ToRole="MODEL" />
+    <NavigationProperty Name="RENTALs" Relationship="Self.RentalFKBikeID" FromRole="BIKE" ToRole="RENTAL" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RENTALs" Relationship="Self.RentalFKCustomerID" FromRole="CUSTOMER" ToRole="RENTAL" />
+  </EntityType>
+  <EntityType Name="MODEL">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Dimension" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Weight" Type="Double" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Deposit" Type="Int32" Nullable="false" />
+    <Property Name="Rate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BIKEs" Relationship="Self.BikeFKModel" FromRole="MODEL" ToRole="BIKE" />
+  </EntityType>
+  <EntityType Name="RENTAL">
+    <Key>
+      <PropertyRef Name="RentalID" />
+    </Key>
+    <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="BikeID" Type="Int32" Nullable="false" />
+    <Property Name="Deposit" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="BIKE" Relationship="Self.RentalFKBikeID" FromRole="RENTAL" ToRole="BIKE" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.RentalFKCustomerID" FromRole="RENTAL" ToRole="CUSTOMER" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExtNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="BikeFKModel">
+    <End Role="MODEL" Type="Self.MODEL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BIKE" Type="Self.BIKE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODEL">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="BIKE">
+        <PropertyRef Name="Model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RentalFKBikeID">
+    <End Role="BIKE" Type="Self.BIKE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BIKE">
+        <PropertyRef Name="BikeID" />
+      </Principal>
+      <Dependent Role="RENTAL">
+        <PropertyRef Name="BikeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RentalFKCustomerID">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="RENTAL">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KiwiBike4RentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BIKEs" EntityType="Self.BIKE" />
+    <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+    <EntitySet Name="MODELs" EntityType="Self.MODEL" />
+    <EntitySet Name="RENTALs" EntityType="Self.RENTAL" />
+    <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
+    <AssociationSet Name="BikeFKModel" Association="Self.BikeFKModel">
+      <End Role="MODEL" EntitySet="MODELs" />
+      <End Role="BIKE" EntitySet="BIKEs" />
+    </AssociationSet>
+    <AssociationSet Name="RentalFKBikeID" Association="Self.RentalFKBikeID">
+      <End Role="BIKE" EntitySet="BIKEs" />
+      <End Role="RENTAL" EntitySet="RENTALs" />
+    </AssociationSet>
+    <AssociationSet Name="RentalFKCustomerID" Association="Self.RentalFKCustomerID">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="RENTAL" EntitySet="RENTALs" />
+    </AssociationSet>
+    <FunctionImport Name="Login_Procedure" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="userType" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

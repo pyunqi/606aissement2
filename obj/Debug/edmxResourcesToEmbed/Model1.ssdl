@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KiwiBike4RentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BIKE">
+    <Key>
+      <PropertyRef Name="BikeID" />
+    </Key>
+    <Property Name="BikeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Model" Type="int" Nullable="false" />
+    <Property Name="RentalPrice" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="LifeTime" Type="int" Nullable="false" />
+    <Property Name="ManufacturedYear" Type="date" Nullable="false" />
+    <Property Name="Accessories" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="rentedDate" Type="date" />
+    <Property Name="dueBackDate" Type="date" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MODEL">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Dimension" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Deposit" Type="int" Nullable="false" />
+    <Property Name="Rate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RENTAL">
+    <Key>
+      <PropertyRef Name="RentalID" />
+    </Key>
+    <Property Name="RentalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="BikeID" Type="int" Nullable="false" />
+    <Property Name="Deposit" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="OfficeAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ExtNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UserType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="BikeFKModel">
+    <End Role="MODEL" Type="Self.MODEL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BIKE" Type="Self.BIKE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODEL">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="BIKE">
+        <PropertyRef Name="Model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RentalFKBikeID">
+    <End Role="BIKE" Type="Self.BIKE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BIKE">
+        <PropertyRef Name="BikeID" />
+      </Principal>
+      <Dependent Role="RENTAL">
+        <PropertyRef Name="BikeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RentalFKCustomerID">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="RENTAL">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Login_Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="userType" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="KiwiBike4RentModelStoreContainer">
+    <EntitySet Name="BIKE" EntityType="Self.BIKE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RENTAL" EntityType="Self.RENTAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="BikeFKModel" Association="Self.BikeFKModel">
+      <End Role="MODEL" EntitySet="MODEL" />
+      <End Role="BIKE" EntitySet="BIKE" />
+    </AssociationSet>
+    <AssociationSet Name="RentalFKBikeID" Association="Self.RentalFKBikeID">
+      <End Role="BIKE" EntitySet="BIKE" />
+      <End Role="RENTAL" EntitySet="RENTAL" />
+    </AssociationSet>
+    <AssociationSet Name="RentalFKCustomerID" Association="Self.RentalFKCustomerID">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="RENTAL" EntitySet="RENTAL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
