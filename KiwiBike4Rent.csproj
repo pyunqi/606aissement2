@@ -127,10 +127,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="KiwiBike4Rent.Designer.cs">
+    <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KiwiBike4Rent.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="ProfileForm.cs">
       <SubType>Form</SubType>
@@ -142,6 +142,42 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RENTAL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RentalManagement\customerManagement\AddCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalManagement\customerManagement\AddCustomerForm.Designer.cs">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RentalManagement\customerManagement\UpdateCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalManagement\customerManagement\UpdateCustomerForm.Designer.cs">
+      <DependentUpon>UpdateCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RentalManagement\RentBikeDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalManagement\RentBikeDashboard.Designer.cs">
+      <DependentUpon>RentBikeDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RentalManagement\RentBikeToCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalManagement\RentBikeToCustomerForm.Designer.cs">
+      <DependentUpon>RentBikeToCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RentalManagement\ReturnBikeToCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalManagement\ReturnBikeToCustomerForm.Designer.cs">
+      <DependentUpon>ReturnBikeToCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RentalManagement\ViewRentalRecordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentalManagement\ViewRentalRecordsForm.Designer.cs">
+      <DependentUpon>ViewRentalRecordsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RentForm.cs">
       <SubType>Form</SubType>
@@ -210,6 +246,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RentalManagement\customerManagement\AddCustomerForm.resx">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalManagement\customerManagement\UpdateCustomerForm.resx">
+      <DependentUpon>UpdateCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalManagement\RentBikeDashboard.resx">
+      <DependentUpon>RentBikeDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalManagement\RentBikeToCustomerForm.resx">
+      <DependentUpon>RentBikeToCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalManagement\ReturnBikeToCustomerForm.resx">
+      <DependentUpon>ReturnBikeToCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentalManagement\ViewRentalRecordsForm.resx">
+      <DependentUpon>ViewRentalRecordsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userManagement\AddStaffForm.resx">
       <DependentUpon>AddStaffForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,12 +276,12 @@
     <EmbeddedResource Include="userManagement\UserManageForm.resx">
       <DependentUpon>UserManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="KiwiBike4Rent.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KiwiBike4Rent.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="KiwiBike4Rent.edmx.diagram">
-      <DependentUpon>KiwiBike4Rent.edmx</DependentUpon>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -249,12 +303,12 @@
   <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KiwiBike4Rent.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KiwiBike4Rent.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>

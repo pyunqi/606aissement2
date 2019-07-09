@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KiwiBike4RentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BIKE">
           <Key>
             <PropertyRef Name="BikeID" />
@@ -49,10 +49,15 @@
           </Key>
           <Property Name="RentalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="StaffID" Type="int" Nullable="false" />
           <Property Name="BikeID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Deposit" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="ReturnDate" Type="date" />
+          <Property Name="Fine" Type="int" />
+          <Property Name="HirePrice" Type="int" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -111,12 +116,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RentalFKStaffID">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="Login_Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
           <Parameter Name="userType" Type="varchar" Mode="In" />
         </Function>
-        <EntityContainer Name="KiwiBike4RentModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="BIKE" EntityType="Self.BIKE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
@@ -134,12 +153,16 @@
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
             <End Role="RENTAL" EntitySet="RENTAL" />
           </AssociationSet>
+          <AssociationSet Name="RentalFKStaffID" Association="Self.RentalFKStaffID">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="KiwiBike4RentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BIKE">
           <Key>
             <PropertyRef Name="BikeID" />
@@ -188,12 +211,18 @@
           </Key>
           <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="StaffID" Type="Int32" Nullable="false" />
           <Property Name="BikeID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deposit" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+          <Property Name="Fine" Type="Int32" />
+          <Property Name="HirePrice" Type="Int32" />
           <NavigationProperty Name="BIKE" Relationship="Self.RentalFKBikeID" FromRole="RENTAL" ToRole="BIKE" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.RentalFKCustomerID" FromRole="RENTAL" ToRole="CUSTOMER" />
+          <NavigationProperty Name="STAFF" Relationship="Self.RentalFKStaffID" FromRole="RENTAL" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -209,6 +238,7 @@
           <Property Name="ExtNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RENTALs" Relationship="Self.RentalFKStaffID" FromRole="STAFF" ToRole="RENTAL" />
         </EntityType>
         <Association Name="BikeFKModel">
           <End Role="MODEL" Type="Self.MODEL" Multiplicity="1">
@@ -252,6 +282,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RentalFKStaffID">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KiwiBike4RentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BIKEs" EntityType="Self.BIKE" />
           <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
@@ -270,6 +314,10 @@
             <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
             <End Role="RENTAL" EntitySet="RENTALs" />
           </AssociationSet>
+          <AssociationSet Name="RentalFKStaffID" Association="Self.RentalFKStaffID">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="RENTAL" EntitySet="RENTALs" />
+          </AssociationSet>
           <FunctionImport Name="Login_Procedure" ReturnType="Collection(Int32)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
@@ -281,9 +329,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="KiwiBike4RentModelStoreContainer" CdmEntityContainer="KiwiBike4RentEntities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="KiwiBike4RentEntities">
           <EntitySetMapping Name="BIKEs">
-            <EntityTypeMapping TypeName="KiwiBike4RentModel.BIKE">
+            <EntityTypeMapping TypeName="Model.BIKE">
               <MappingFragment StoreEntitySet="BIKE">
                 <ScalarProperty Name="BikeID" ColumnName="BikeID" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
@@ -298,7 +346,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUSTOMERs">
-            <EntityTypeMapping TypeName="KiwiBike4RentModel.CUSTOMER">
+            <EntityTypeMapping TypeName="Model.CUSTOMER">
               <MappingFragment StoreEntitySet="CUSTOMER">
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -310,7 +358,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MODELs">
-            <EntityTypeMapping TypeName="KiwiBike4RentModel.MODEL">
+            <EntityTypeMapping TypeName="Model.MODEL">
               <MappingFragment StoreEntitySet="MODEL">
                 <ScalarProperty Name="ModelID" ColumnName="ModelID" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
@@ -324,19 +372,24 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RENTALs">
-            <EntityTypeMapping TypeName="KiwiBike4RentModel.RENTAL">
+            <EntityTypeMapping TypeName="Model.RENTAL">
               <MappingFragment StoreEntitySet="RENTAL">
                 <ScalarProperty Name="RentalID" ColumnName="RentalID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
                 <ScalarProperty Name="BikeID" ColumnName="BikeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Deposit" ColumnName="Deposit" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Fine" ColumnName="Fine" />
+                <ScalarProperty Name="HirePrice" ColumnName="HirePrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STAFFs">
-            <EntityTypeMapping TypeName="KiwiBike4RentModel.STAFF">
+            <EntityTypeMapping TypeName="Model.STAFF">
               <MappingFragment StoreEntitySet="STAFF">
                 <ScalarProperty Name="StaffID" ColumnName="StaffID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -351,7 +404,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Login_Procedure" FunctionName="KiwiBike4RentModel.Store.Login_Procedure" />
+          <FunctionImportMapping FunctionImportName="Login_Procedure" FunctionName="Model.Store.Login_Procedure" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="KiwiBike4RentModelStoreContainer" CdmEntityContainer="KiwiBike4RentEntities">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="KiwiBike4RentEntities">
     <EntitySetMapping Name="BIKEs">
-      <EntityTypeMapping TypeName="KiwiBike4RentModel.BIKE">
+      <EntityTypeMapping TypeName="Model.BIKE">
         <MappingFragment StoreEntitySet="BIKE">
           <ScalarProperty Name="BikeID" ColumnName="BikeID" />
           <ScalarProperty Name="Model" ColumnName="Model" />
@@ -17,7 +17,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CUSTOMERs">
-      <EntityTypeMapping TypeName="KiwiBike4RentModel.CUSTOMER">
+      <EntityTypeMapping TypeName="Model.CUSTOMER">
         <MappingFragment StoreEntitySet="CUSTOMER">
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -29,7 +29,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MODELs">
-      <EntityTypeMapping TypeName="KiwiBike4RentModel.MODEL">
+      <EntityTypeMapping TypeName="Model.MODEL">
         <MappingFragment StoreEntitySet="MODEL">
           <ScalarProperty Name="ModelID" ColumnName="ModelID" />
           <ScalarProperty Name="Brand" ColumnName="Brand" />
@@ -43,19 +43,24 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RENTALs">
-      <EntityTypeMapping TypeName="KiwiBike4RentModel.RENTAL">
+      <EntityTypeMapping TypeName="Model.RENTAL">
         <MappingFragment StoreEntitySet="RENTAL">
           <ScalarProperty Name="RentalID" ColumnName="RentalID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="BikeID" ColumnName="BikeID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Deposit" ColumnName="Deposit" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="Fine" ColumnName="Fine" />
+          <ScalarProperty Name="HirePrice" ColumnName="HirePrice" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="STAFFs">
-      <EntityTypeMapping TypeName="KiwiBike4RentModel.STAFF">
+      <EntityTypeMapping TypeName="Model.STAFF">
         <MappingFragment StoreEntitySet="STAFF">
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -70,6 +75,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="Login_Procedure" FunctionName="KiwiBike4RentModel.Store.Login_Procedure" />
+    <FunctionImportMapping FunctionImportName="Login_Procedure" FunctionName="Model.Store.Login_Procedure" />
   </EntityContainerMapping>
 </Mapping>

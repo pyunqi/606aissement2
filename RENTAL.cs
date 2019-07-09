@@ -16,12 +16,18 @@ namespace KiwiBike4Rent
     {
         public int RentalID { get; set; }
         public int CustomerID { get; set; }
+        public int StaffID { get; set; }
         public int BikeID { get; set; }
+        public string Status { get; set; }
         public int Deposit { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }
+        public Nullable<int> Fine { get; set; }
+        public Nullable<int> HirePrice { get; set; }
     
         public virtual BIKE BIKE { get; set; }
         public virtual CUSTOMER CUSTOMER { get; set; }
+        public virtual STAFF STAFF { get; set; }
     }
 }

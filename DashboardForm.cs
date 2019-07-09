@@ -94,5 +94,11 @@ namespace KiwiBike4Rent
             }
 
         }
+
+        private void btnRentBike_Click(object sender, EventArgs e)
+        {
+            RentalManagement.RentBikeDashboard rentBikeDashboard = new RentalManagement.RentBikeDashboard();
+            rentBikeDashboard.ShowDialog();
+        }
     }
 }

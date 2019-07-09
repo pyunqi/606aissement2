@@ -14,6 +14,12 @@ namespace KiwiBike4Rent
     
     public partial class STAFF
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public STAFF()
+        {
+            this.RENTALs = new HashSet<RENTAL>();
+        }
+    
         public int StaffID { get; set; }
         public string Name { get; set; }
         public string UserName { get; set; }
@@ -24,5 +30,8 @@ namespace KiwiBike4Rent
         public string ExtNumber { get; set; }
         public string UserType { get; set; }
         public string Role { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RENTAL> RENTALs { get; set; }
     }
 }
