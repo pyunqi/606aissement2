@@ -25,3 +25,4 @@ C:\Users\Admin\Documents\SOFT606\assignment2\Assignment2YQP\obj\Debug\KiwiBike4R
 C:\Users\Admin\Documents\SOFT606\assignment2\Assignment2YQP\obj\Debug\KiwiBike4Rent.exe
 C:\Users\Admin\Documents\SOFT606\assignment2\Assignment2YQP\obj\Debug\KiwiBike4Rent.pdb
 C:\Users\Admin\Documents\SOFT606\assignment2\Assignment2YQP\bin\Debug\KiwiBike4Rent.pdb
+C:\Users\Admin\Documents\SOFT606\assignment2\Assignment2YQP\obj\Debug\KiwiBike4Rent.csprojAssemblyReference.cache

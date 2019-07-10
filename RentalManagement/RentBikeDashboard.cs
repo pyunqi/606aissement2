@@ -43,11 +43,30 @@ namespace KiwiBike4Rent.RentalManagement
                 {
 
                 }
-                else
+                else if(rbAll.Checked)
                 {
-
+                    var customers = kiwiBike4RentEntities.CUSTOMERs.ToList<CUSTOMER>();
+                    dgvCustomers.DataSource = customers;
                 }
             }
+        }
+
+        private void rbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCustomerID.Enabled = false;
+            dtpCustomerDOB.Enabled = false;
+        }
+
+        private void rbCustomerID_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCustomerID.Enabled = true;
+            dtpCustomerDOB.Enabled = false;
+        }
+
+        private void rbDOB_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCustomerID.Enabled = false;
+            dtpCustomerDOB.Enabled = true;
         }
     }
 }

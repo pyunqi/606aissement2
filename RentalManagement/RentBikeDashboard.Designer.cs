@@ -32,7 +32,7 @@
             this.rbDOB = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpCustomerDOB = new System.Windows.Forms.DateTimePicker();
@@ -41,6 +41,7 @@
             this.btnRentBike = new System.Windows.Forms.Button();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnReturnBike = new System.Windows.Forms.Button();
+            this.rbAll = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
@@ -48,32 +49,33 @@
             // rbCustomerID
             // 
             this.rbCustomerID.AutoSize = true;
-            this.rbCustomerID.Location = new System.Drawing.Point(6, 19);
+            this.rbCustomerID.Location = new System.Drawing.Point(71, 19);
             this.rbCustomerID.Name = "rbCustomerID";
             this.rbCustomerID.Size = new System.Drawing.Size(91, 17);
             this.rbCustomerID.TabIndex = 0;
-            this.rbCustomerID.TabStop = true;
             this.rbCustomerID.Text = "byCustomerID";
             this.rbCustomerID.UseVisualStyleBackColor = true;
+            this.rbCustomerID.CheckedChanged += new System.EventHandler(this.rbCustomerID_CheckedChanged);
             // 
             // rbDOB
             // 
             this.rbDOB.AutoSize = true;
-            this.rbDOB.Location = new System.Drawing.Point(103, 19);
+            this.rbDOB.Location = new System.Drawing.Point(168, 19);
             this.rbDOB.Name = "rbDOB";
             this.rbDOB.Size = new System.Drawing.Size(59, 17);
             this.rbDOB.TabIndex = 0;
-            this.rbDOB.TabStop = true;
             this.rbDOB.Text = "byDOB";
             this.rbDOB.UseVisualStyleBackColor = true;
+            this.rbDOB.CheckedChanged += new System.EventHandler(this.rbDOB_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbCustomerID);
+            this.groupBox1.Controls.Add(this.rbAll);
             this.groupBox1.Controls.Add(this.rbDOB);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(162, 41);
+            this.groupBox1.Size = new System.Drawing.Size(241, 52);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -86,15 +88,16 @@
             this.dgvCustomers.Location = new System.Drawing.Point(279, 12);
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.ReadOnly = true;
-            this.dgvCustomers.Size = new System.Drawing.Size(500, 332);
+            this.dgvCustomers.Size = new System.Drawing.Size(652, 333);
             this.dgvCustomers.TabIndex = 2;
             // 
-            // textBox1
+            // txtCustomerID
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtCustomerID.Enabled = false;
+            this.txtCustomerID.Location = new System.Drawing.Point(74, 70);
+            this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomerID.TabIndex = 3;
             // 
             // label1
             // 
@@ -116,6 +119,7 @@
             // 
             // dtpCustomerDOB
             // 
+            this.dtpCustomerDOB.Enabled = false;
             this.dtpCustomerDOB.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dtpCustomerDOB.Location = new System.Drawing.Point(73, 99);
             this.dtpCustomerDOB.Name = "dtpCustomerDOB";
@@ -169,11 +173,24 @@
             this.btnReturnBike.Text = "Customer Return Bike";
             this.btnReturnBike.UseVisualStyleBackColor = true;
             // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
+            this.rbAll.Location = new System.Drawing.Point(6, 19);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(36, 17);
+            this.rbAll.TabIndex = 0;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
+            // 
             // RentBikeDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 357);
+            this.ClientSize = new System.Drawing.Size(943, 357);
             this.Controls.Add(this.btnReturnBike);
             this.Controls.Add(this.btnRentBike);
             this.Controls.Add(this.btnUpdateCustomer);
@@ -182,7 +199,7 @@
             this.Controls.Add(this.dtpCustomerDOB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCustomerID);
             this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.groupBox1);
             this.Name = "RentBikeDashboard";
@@ -202,7 +219,7 @@
         private System.Windows.Forms.RadioButton rbDOB;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvCustomers;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpCustomerDOB;
@@ -211,5 +228,6 @@
         private System.Windows.Forms.Button btnRentBike;
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnReturnBike;
+        private System.Windows.Forms.RadioButton rbAll;
     }
 }
