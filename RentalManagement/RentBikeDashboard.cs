@@ -22,7 +22,10 @@ namespace KiwiBike4Rent.RentalManagement
         {
             customerManagement.AddCustomerForm addCustomerForm = new customerManagement.AddCustomerForm();
             addCustomerForm.ShowDialog();
-            //how to receive last added customer id?
+            using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
+            {
+                dgvCustomers.DataSource = getAllCustomers(kiwiBike4RentEntities); ;
+            }
         }
 
         private void RentBikeDashboard_Load(object sender, EventArgs e)
@@ -32,23 +35,43 @@ namespace KiwiBike4Rent.RentalManagement
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dtpCustomerDOB.Value.ToString());
+            int cID = 0;
+            Int32.TryParse(txtCustomerID.Text, out cID);
+            DateTime dob = Convert.ToDateTime(dtpCustomerDOB.Value.ToString("D"));
+
             using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
             {
+                List<CUSTOMER> customers = null;
+
                 if (rbCustomerID.Checked)
                 {
-
+                    if (cID > 0)
+                    {
+                        customers = kiwiBike4RentEntities.CUSTOMERs.Include("RENTALs").Where(c => c.CustomerID == cID).ToList<CUSTOMER>();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer ID has to bigger than 0", "Wrong Customer ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
                 else if (rbDOB.Checked)
                 {
+                    customers = kiwiBike4RentEntities.CUSTOMERs.Include("RENTALs").Where(c => c.DOB == dob).ToList<CUSTOMER>();
+                }
+                else if (rbAll.Checked)
+                {
+                    customers = getAllCustomers(kiwiBike4RentEntities);
 
                 }
-                else if(rbAll.Checked)
-                {
-                    var customers = kiwiBike4RentEntities.CUSTOMERs.ToList<CUSTOMER>();
-                    dgvCustomers.DataSource = customers;
-                }
+
+                dgvCustomers.DataSource = customers;
             }
+        }
+
+        private static List<CUSTOMER> getAllCustomers(KiwiBike4RentEntities kiwiBike4RentEntities)
+        {
+            return kiwiBike4RentEntities.CUSTOMERs.Include("RENTALs").ToList<CUSTOMER>();
         }
 
         private void rbAll_CheckedChanged(object sender, EventArgs e)
@@ -68,5 +91,43 @@ namespace KiwiBike4Rent.RentalManagement
             txtCustomerID.Enabled = false;
             dtpCustomerDOB.Enabled = true;
         }
+
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+           
+            customerManagement.UpdateCustomerForm updateCustomerForm = new customerManagement.UpdateCustomerForm(getSelectCustomerID());
+            updateCustomerForm.ShowDialog();
+            using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
+            {
+                dgvCustomers.DataSource = getAllCustomers(kiwiBike4RentEntities); ;
+            }
+        }
+
+        private void btnRentBike_Click(object sender, EventArgs e)
+        {
+            getSelectCustomerID();
+
+        }
+
+        private void btnReturnBike_Click(object sender, EventArgs e)
+        {
+            getSelectCustomerID();
+
+        }
+
+        private int getSelectCustomerID()
+        {
+            int cID = 0;
+            if (dgvCustomers.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select ONE ROW per time for updating!", "Select ONE!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Int32.TryParse(dgvCustomers.SelectedRows[0].Cells[0].Value.ToString(), out cID);
+            }
+            return cID;
+        }
+
     }
 }

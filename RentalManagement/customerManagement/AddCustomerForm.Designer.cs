@@ -50,6 +50,7 @@
             this.btnClose.TabIndex = 51;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAddCustomer
             // 
@@ -59,6 +60,7 @@
             this.btnAddCustomer.TabIndex = 50;
             this.btnAddCustomer.Text = "Add Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // label10
             // 

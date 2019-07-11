@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSearchCustomer = new System.Windows.Forms.Button();
+            this.btnSearchRentals = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
+            this.dgvRentals = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRentals)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnSearchCustomer
+            // btnSearchRentals
             // 
-            this.btnSearchCustomer.Location = new System.Drawing.Point(21, 190);
-            this.btnSearchCustomer.Name = "btnSearchCustomer";
-            this.btnSearchCustomer.Size = new System.Drawing.Size(138, 29);
-            this.btnSearchCustomer.TabIndex = 17;
-            this.btnSearchCustomer.Text = "Search";
-            this.btnSearchCustomer.UseVisualStyleBackColor = true;
+            this.btnSearchRentals.Location = new System.Drawing.Point(23, 121);
+            this.btnSearchRentals.Name = "btnSearchRentals";
+            this.btnSearchRentals.Size = new System.Drawing.Size(138, 29);
+            this.btnSearchRentals.TabIndex = 17;
+            this.btnSearchRentals.Text = "Search";
+            this.btnSearchRentals.UseVisualStyleBackColor = true;
+            this.btnSearchRentals.Click += new System.EventHandler(this.btnSearchRentals_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 148);
+            this.label1.Location = new System.Drawing.Point(26, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 11;
@@ -60,32 +61,32 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(88, 145);
+            this.textBox1.Location = new System.Drawing.Point(94, 71);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 9;
             // 
-            // dgvCustomers
+            // dgvRentals
             // 
-            this.dgvCustomers.AllowUserToAddRows = false;
-            this.dgvCustomers.AllowUserToDeleteRows = false;
-            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Location = new System.Drawing.Point(203, 12);
-            this.dgvCustomers.Name = "dgvCustomers";
-            this.dgvCustomers.ReadOnly = true;
-            this.dgvCustomers.Size = new System.Drawing.Size(623, 317);
-            this.dgvCustomers.TabIndex = 8;
+            this.dgvRentals.AllowUserToAddRows = false;
+            this.dgvRentals.AllowUserToDeleteRows = false;
+            this.dgvRentals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRentals.Location = new System.Drawing.Point(203, 12);
+            this.dgvRentals.Name = "dgvRentals";
+            this.dgvRentals.ReadOnly = true;
+            this.dgvRentals.Size = new System.Drawing.Size(623, 317);
+            this.dgvRentals.TabIndex = 8;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(21, 67);
+            this.groupBox1.Location = new System.Drawing.Point(23, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(144, 38);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Select Searching Option";
             // 
             // radioButton1
             // 
@@ -125,13 +126,13 @@
             this.ClientSize = new System.Drawing.Size(837, 347);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnSearchCustomer);
+            this.Controls.Add(this.btnSearchRentals);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dgvCustomers);
+            this.Controls.Add(this.dgvRentals);
             this.Name = "ViewRentalRecordsForm";
             this.Text = "ViewRentalRecordsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRentals)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -141,10 +142,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnSearchCustomer;
+        private System.Windows.Forms.Button btnSearchRentals;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dgvCustomers;
+        private System.Windows.Forms.DataGridView dgvRentals;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;

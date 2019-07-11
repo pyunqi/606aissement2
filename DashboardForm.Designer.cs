@@ -96,6 +96,7 @@
             this.btnViewRentals.TabIndex = 7;
             this.btnViewRentals.Text = "View Rentals";
             this.btnViewRentals.UseVisualStyleBackColor = true;
+            this.btnViewRentals.Click += new System.EventHandler(this.btnViewRentals_Click);
             // 
             // btnRentBike
             // 

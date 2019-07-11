@@ -66,6 +66,7 @@
             this.btnAddCustomer.TabIndex = 62;
             this.btnAddCustomer.Text = "Update Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // label10
             // 
@@ -163,6 +164,7 @@
             this.Controls.Add(this.txtName);
             this.Name = "UpdateCustomerForm";
             this.Text = "UpdateCustomerForm";
+            this.Load += new System.EventHandler(this.UpdateCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

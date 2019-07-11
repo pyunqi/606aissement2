@@ -78,7 +78,7 @@
             this.groupBox1.Size = new System.Drawing.Size(241, 52);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Select Searching Option";
             // 
             // dgvCustomers
             // 
@@ -154,6 +154,7 @@
             this.btnRentBike.TabIndex = 6;
             this.btnRentBike.Text = "Rent Bike to Customer";
             this.btnRentBike.UseVisualStyleBackColor = true;
+            this.btnRentBike.Click += new System.EventHandler(this.btnRentBike_Click);
             // 
             // btnUpdateCustomer
             // 
@@ -163,6 +164,7 @@
             this.btnUpdateCustomer.TabIndex = 6;
             this.btnUpdateCustomer.Text = "Update Customer";
             this.btnUpdateCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
             // 
             // btnReturnBike
             // 
@@ -172,6 +174,7 @@
             this.btnReturnBike.TabIndex = 6;
             this.btnReturnBike.Text = "Customer Return Bike";
             this.btnReturnBike.UseVisualStyleBackColor = true;
+            this.btnReturnBike.Click += new System.EventHandler(this.btnReturnBike_Click);
             // 
             // rbAll
             // 
