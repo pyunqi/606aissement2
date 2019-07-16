@@ -26,7 +26,7 @@ namespace KiwiBike4Rent.RentalManagement
             //load data with related table(model1) and re-orgnize data structure
             using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
             {
-                var bikes = from allBikes in kiwiBike4RentEntities.BIKEs.Include("MODEL1").Where(b => b.Status == bikeStatus )
+                var bikes = from allBikes in kiwiBike4RentEntities.BIKEs.Include("MODEL1").Where(b => b.Status == bikeStatus)
                             select new
                             {
                                 allBikes.BikeID,
@@ -79,7 +79,7 @@ namespace KiwiBike4Rent.RentalManagement
         {
             using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
             {
-               CUSTOMER customer = kiwiBike4RentEntities.CUSTOMERs.Where(c => c.CustomerID == customerID).SingleOrDefault();
+                CUSTOMER customer = kiwiBike4RentEntities.CUSTOMERs.Where(c => c.CustomerID == customerID).SingleOrDefault();
                 txtCustomerInfo.Text = "ID: " + customer.CustomerID + ", Name: " + customer.Name;
                 var brand = kiwiBike4RentEntities.MODELs.Select(b => b.Brand).Distinct();
                 foreach (string b in brand.ToList())
@@ -117,5 +117,14 @@ namespace KiwiBike4Rent.RentalManagement
                 dgvShowBikes.DataSource = bikes.ToList();
             }
         }
+
+        private void dgvAddDeposit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+               String deposit = dgvShowBikes.Rows[e.RowIndex].Cells[3].Value.ToString();
+               txtDeposit.Text = deposit;
+            }
         }
+    }
 }

@@ -45,7 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCustomerInfo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDeposite = new System.Windows.Forms.TextBox();
+            this.txtDeposit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowBikes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +76,7 @@
             this.dgvShowBikes.Name = "dgvShowBikes";
             this.dgvShowBikes.Size = new System.Drawing.Size(637, 245);
             this.dgvShowBikes.TabIndex = 25;
+            this.dgvShowBikes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAddDeposit_CellDoubleClick);
             // 
             // label5
             // 
@@ -196,16 +197,16 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 214);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 26;
-            this.label7.Text = "Deposite: ";
+            this.label7.Text = "Deposit: ";
             // 
-            // txtDeposite
+            // txtDeposit
             // 
-            this.txtDeposite.Location = new System.Drawing.Point(67, 211);
-            this.txtDeposite.Name = "txtDeposite";
-            this.txtDeposite.Size = new System.Drawing.Size(125, 20);
-            this.txtDeposite.TabIndex = 20;
+            this.txtDeposit.Location = new System.Drawing.Point(67, 211);
+            this.txtDeposit.Name = "txtDeposit";
+            this.txtDeposit.Size = new System.Drawing.Size(125, 20);
+            this.txtDeposit.TabIndex = 20;
             // 
             // RentBikeToCustomerForm
             // 
@@ -215,7 +216,7 @@
             this.Controls.Add(this.txtCustomerInfo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.txtDeposite);
+            this.Controls.Add(this.txtDeposit);
             this.Controls.Add(this.txtRentalPrice);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvShowBikes);
@@ -258,6 +259,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCustomerInfo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtDeposite;
+        private System.Windows.Forms.TextBox txtDeposit;
     }
 }
