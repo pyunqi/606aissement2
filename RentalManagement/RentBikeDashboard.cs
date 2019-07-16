@@ -94,7 +94,7 @@ namespace KiwiBike4Rent.RentalManagement
 
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
-           
+
             customerManagement.UpdateCustomerForm updateCustomerForm = new customerManagement.UpdateCustomerForm(getSelectCustomerID());
             updateCustomerForm.ShowDialog();
             using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
@@ -105,13 +105,19 @@ namespace KiwiBike4Rent.RentalManagement
 
         private void btnRentBike_Click(object sender, EventArgs e)
         {
-            getSelectCustomerID();
-
+            int cID = getSelectCustomerID();
+            if (cID <= 0)
+            {
+                return;
+            }
+            RentalManagement.RentBikeToCustomerForm rentBikeToCustomerForm = new RentBikeToCustomerForm(cID);
+            rentBikeToCustomerForm.ShowDialog();
+            this.Hide();
         }
 
         private void btnReturnBike_Click(object sender, EventArgs e)
         {
-            getSelectCustomerID();
+            int cID = getSelectCustomerID();
 
         }
 
@@ -121,6 +127,7 @@ namespace KiwiBike4Rent.RentalManagement
             if (dgvCustomers.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Please select ONE ROW per time for updating!", "Select ONE!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return cID;
             }
             else
             {

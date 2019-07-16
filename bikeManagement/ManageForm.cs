@@ -118,7 +118,7 @@ namespace KiwiBike4Rent.bikeManagement
                         txtRentalPrice.Focus();
                         return;
                     }
-                    bikes = bikes.Where(b => b.RentalPrice < i);
+                    bikes = bikes.Where(b => b.RentalPrice <= i);
                 }
                 //put data to dataGridview
                 dgvManageBikes.DataSource = bikes.ToList();

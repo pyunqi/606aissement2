@@ -115,12 +115,8 @@
             // 
             // boxStatus
             // 
+            this.boxStatus.Enabled = false;
             this.boxStatus.FormattingEnabled = true;
-            this.boxStatus.Items.AddRange(new object[] {
-            "available",
-            "rented",
-            "sold",
-            "maintenance"});
             this.boxStatus.Location = new System.Drawing.Point(67, 130);
             this.boxStatus.Name = "boxStatus";
             this.boxStatus.Size = new System.Drawing.Size(121, 21);
@@ -236,6 +232,7 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "RentBikeToCustomerForm";
             this.Text = "RentBikeToCustomerForm";
+            this.Load += new System.EventHandler(this.RentBikeToCustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowBikes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
