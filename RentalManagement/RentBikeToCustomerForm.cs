@@ -122,8 +122,84 @@ namespace KiwiBike4Rent.RentalManagement
         {
             if (e.RowIndex > 0)
             {
-               String deposit = dgvShowBikes.Rows[e.RowIndex].Cells[3].Value.ToString();
-               txtDeposit.Text = deposit;
+                String deposit = dgvShowBikes.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtDeposit.Text = deposit;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRentBike_Click(object sender, EventArgs e)
+        {
+            int deposit = 0;
+            int days = 0;
+            if (dgvShowBikes.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select one bike for renting!", "One Row Per Time", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDeposit.Text))
+            {
+                MessageBox.Show("Deposit cannot be empty!","Error!",MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                Int32.TryParse(txtDeposit.Text, out deposit);
+                if (deposit == 0)
+                {
+                    MessageBox.Show("Deposit must be a number","Error!", MessageBoxButtons.OK);
+                    txtRentalPrice.Focus();
+                    return;
+                }
+            }
+            if (string.IsNullOrEmpty(txtDays.Text))
+            {
+                MessageBox.Show("Rental Days cannot be empty!", "Error!", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                Int32.TryParse(txtDays.Text, out days);
+                if (days == 0)
+                {
+                    MessageBox.Show("Rental days must be a number", "Error!", MessageBoxButtons.OK);
+                    txtDays.Focus();
+                    return;
+                }
+            }
+
+            int bikeID = 0;
+            DataGridViewRow row = dgvShowBikes.SelectedRows[0];
+            Int32.TryParse(row.Cells[0].Value.ToString(), out bikeID);
+
+            using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
+            {
+                BIKE bike = kiwiBike4RentEntities.BIKEs.Where(b => b.BikeID == bikeID).SingleOrDefault();
+                RENTAL rental = new RENTAL();
+                rental.BikeID = bikeID;
+                rental.CustomerID = customerID;
+                rental.StartDate =System.DateTime.Now;
+                rental.EndDate = System.DateTime.Now.AddDays(days);
+                rental.StaffID = LoginInfo.currentUser.StaffID;
+                rental.Deposit = deposit;
+                rental.Status = Constants.rentalStatus[0];
+                kiwiBike4RentEntities.RENTALs.Add(rental);
+                bike.Status = Constants.status[1];
+                kiwiBike4RentEntities.SaveChanges();
+            }
+            DialogResult result = MessageBox.Show("Do you need to rent another bike to current customer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (DialogResult.No == result)
+            {
+                this.Close();
+            }
+            else
+            {
+                txtDays.Clear();
+                txtDeposit.Clear();
             }
         }
     }

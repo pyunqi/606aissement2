@@ -111,8 +111,9 @@ namespace KiwiBike4Rent.RentalManagement
                 return;
             }
             RentalManagement.RentBikeToCustomerForm rentBikeToCustomerForm = new RentBikeToCustomerForm(cID);
-            rentBikeToCustomerForm.ShowDialog();
             this.Hide();
+            rentBikeToCustomerForm.ShowDialog();
+            this.Show();
         }
 
         private void btnReturnBike_Click(object sender, EventArgs e)

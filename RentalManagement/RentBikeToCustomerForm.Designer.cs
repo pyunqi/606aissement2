@@ -46,17 +46,20 @@
             this.txtCustomerInfo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDeposit = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtDays = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowBikes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(12, 319);
+            this.btnClose.Location = new System.Drawing.Point(12, 382);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(118, 35);
             this.btnClose.TabIndex = 31;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // txtRentalPrice
             // 
@@ -158,16 +161,17 @@
             // 
             // btnRentBike
             // 
-            this.btnRentBike.Location = new System.Drawing.Point(12, 271);
+            this.btnRentBike.Location = new System.Drawing.Point(12, 333);
             this.btnRentBike.Name = "btnRentBike";
             this.btnRentBike.Size = new System.Drawing.Size(180, 28);
             this.btnRentBike.TabIndex = 22;
             this.btnRentBike.Text = "Rent Bike";
             this.btnRentBike.UseVisualStyleBackColor = true;
+            this.btnRentBike.Click += new System.EventHandler(this.btnRentBike_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(12, 237);
+            this.btnSearch.Location = new System.Drawing.Point(12, 208);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(180, 28);
             this.btnSearch.TabIndex = 21;
@@ -195,7 +199,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 214);
+            this.label7.Location = new System.Drawing.Point(9, 265);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 26;
@@ -203,20 +207,38 @@
             // 
             // txtDeposit
             // 
-            this.txtDeposit.Location = new System.Drawing.Point(67, 211);
+            this.txtDeposit.Location = new System.Drawing.Point(63, 262);
             this.txtDeposit.Name = "txtDeposit";
             this.txtDeposit.Size = new System.Drawing.Size(125, 20);
             this.txtDeposit.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 291);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Days:";
+            // 
+            // txtDays
+            // 
+            this.txtDays.Location = new System.Drawing.Point(63, 288);
+            this.txtDays.Name = "txtDays";
+            this.txtDays.Size = new System.Drawing.Size(125, 20);
+            this.txtDays.TabIndex = 20;
             // 
             // RentBikeToCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 360);
+            this.ClientSize = new System.Drawing.Size(878, 429);
             this.Controls.Add(this.txtCustomerInfo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.txtDays);
             this.Controls.Add(this.txtDeposit);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtRentalPrice);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvShowBikes);
@@ -260,5 +282,7 @@
         private System.Windows.Forms.TextBox txtCustomerInfo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDeposit;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtDays;
     }
 }

@@ -12,6 +12,7 @@ namespace KiwiBike4Rent
         public static List<String> asscessories = new List<string>() { "trailers", "baby seats", "car racks" };
         public static List<String> categories = new List<string>() { "electric", "mountain", "city", "kids" };
         public static List<String> roles = new List<string>() { "admin", "management", "check-out" };
+        public static List<String> rentalStatus = new List<string>() { "using", "finished" };
 
     }
 }
