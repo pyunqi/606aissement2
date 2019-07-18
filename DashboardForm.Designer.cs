@@ -104,7 +104,7 @@
             this.btnRentBike.Name = "btnRentBike";
             this.btnRentBike.Size = new System.Drawing.Size(172, 38);
             this.btnRentBike.TabIndex = 7;
-            this.btnRentBike.Text = "Rent Bike";
+            this.btnRentBike.Text = "Bike Rental Dashboard";
             this.btnRentBike.UseVisualStyleBackColor = true;
             this.btnRentBike.Click += new System.EventHandler(this.btnRentBike_Click);
             // 

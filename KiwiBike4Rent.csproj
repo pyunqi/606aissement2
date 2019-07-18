@@ -155,11 +155,11 @@
     <Compile Include="RentalManagement\customerManagement\UpdateCustomerForm.Designer.cs">
       <DependentUpon>UpdateCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RentalManagement\RentBikeDashboard.cs">
+    <Compile Include="RentalManagement\BikeRentalDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RentalManagement\RentBikeDashboard.Designer.cs">
-      <DependentUpon>RentBikeDashboard.cs</DependentUpon>
+    <Compile Include="RentalManagement\BikeRentalDashboard.Designer.cs">
+      <DependentUpon>BikeRentalDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="RentalManagement\RentBikeToCustomerForm.cs">
       <SubType>Form</SubType>
@@ -167,11 +167,11 @@
     <Compile Include="RentalManagement\RentBikeToCustomerForm.Designer.cs">
       <DependentUpon>RentBikeToCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RentalManagement\ReturnBikeToCustomerForm.cs">
+    <Compile Include="RentalManagement\CustomerReturnBikeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RentalManagement\ReturnBikeToCustomerForm.Designer.cs">
-      <DependentUpon>ReturnBikeToCustomerForm.cs</DependentUpon>
+    <Compile Include="RentalManagement\CustomerReturnBikeForm.Designer.cs">
+      <DependentUpon>CustomerReturnBikeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RentalManagement\ViewRentalRecordsForm.cs">
       <SubType>Form</SubType>
@@ -246,14 +246,14 @@
     <EmbeddedResource Include="RentalManagement\customerManagement\UpdateCustomerForm.resx">
       <DependentUpon>UpdateCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RentalManagement\RentBikeDashboard.resx">
-      <DependentUpon>RentBikeDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="RentalManagement\BikeRentalDashboard.resx">
+      <DependentUpon>BikeRentalDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RentalManagement\RentBikeToCustomerForm.resx">
       <DependentUpon>RentBikeToCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RentalManagement\ReturnBikeToCustomerForm.resx">
-      <DependentUpon>ReturnBikeToCustomerForm.cs</DependentUpon>
+    <EmbeddedResource Include="RentalManagement\CustomerReturnBikeForm.resx">
+      <DependentUpon>CustomerReturnBikeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RentalManagement\ViewRentalRecordsForm.resx">
       <DependentUpon>ViewRentalRecordsForm.cs</DependentUpon>

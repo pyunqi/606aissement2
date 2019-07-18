@@ -1,6 +1,6 @@
 ﻿namespace KiwiBike4Rent.RentalManagement
 {
-    partial class RentBikeDashboard
+    partial class BikeRentalDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.rbCustomerID = new System.Windows.Forms.RadioButton();
             this.rbDOB = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbAll = new System.Windows.Forms.RadioButton();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.btnRentBike = new System.Windows.Forms.Button();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnReturnBike = new System.Windows.Forms.Button();
-            this.rbAll = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +79,19 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Searching Option";
+            // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
+            this.rbAll.Location = new System.Drawing.Point(6, 19);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(36, 17);
+            this.rbAll.TabIndex = 0;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
             // 
             // dgvCustomers
             // 
@@ -176,19 +189,6 @@
             this.btnReturnBike.UseVisualStyleBackColor = true;
             this.btnReturnBike.Click += new System.EventHandler(this.btnReturnBike_Click);
             // 
-            // rbAll
-            // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Checked = true;
-            this.rbAll.Location = new System.Drawing.Point(6, 19);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(36, 17);
-            this.rbAll.TabIndex = 0;
-            this.rbAll.TabStop = true;
-            this.rbAll.Text = "All";
-            this.rbAll.UseVisualStyleBackColor = true;
-            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
-            // 
             // RentBikeDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,7 +206,7 @@
             this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.groupBox1);
             this.Name = "RentBikeDashboard";
-            this.Text = "RentBikeDashboard";
+            this.Text = "BikeRentalDashboard";
             this.Load += new System.EventHandler(this.RentBikeDashboard_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KiwiBike4Rent.RentalManagement
 {
-    public partial class RentBikeDashboard : Form
+    public partial class BikeRentalDashboard : Form
     {
-        public RentBikeDashboard()
+        public BikeRentalDashboard()
         {
             InitializeComponent();
         }
@@ -119,6 +119,14 @@ namespace KiwiBike4Rent.RentalManagement
         private void btnReturnBike_Click(object sender, EventArgs e)
         {
             int cID = getSelectCustomerID();
+            if (cID <= 0)
+            {
+                return;
+            }
+            RentalManagement.CustomerReturnBikeForm customerReturnBikeForm = new CustomerReturnBikeForm(cID);
+            this.Hide();
+            customerReturnBikeForm.ShowDialog();
+            this.Show();
 
         }
 
@@ -127,7 +135,7 @@ namespace KiwiBike4Rent.RentalManagement
             int cID = 0;
             if (dgvCustomers.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select ONE ROW per time for updating!", "Select ONE!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Customer first!", "Select ONE Customer!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return cID;
             }
             else
