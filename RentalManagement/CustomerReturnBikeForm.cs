@@ -54,14 +54,15 @@ namespace KiwiBike4Rent.RentalManagement
         //auto input and cauculate checkout information
         private void dgvShowRentals_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewCellCollection cells = dgvShowRentals.Rows[e.RowIndex].Cells;
 
                 txtDeposit.Text = cells[2].Value.ToString();
-                int factDays = (System.DateTime.Now - Convert.ToDateTime(cells[6].ToString())).Days;
-                int planDays = (Convert.ToDateTime(cells[7].Value.ToString()) - Convert.ToDateTime(cells[6].ToString())).Days;
+                int factDays = System.DateTime.Now.Subtract(Convert.ToDateTime(cells[6].Value.ToString())).Days;
+                int planDays = (Convert.ToDateTime(cells[7].Value.ToString()) - Convert.ToDateTime(cells[6].Value.ToString())).Days;
                 int overDueDays = factDays - planDays;
+                txtRentalPrice.Text = cells[3].Value.ToString();
                 txtHiredDays.Text = factDays.ToString();
                 if (overDueDays < 0)
                 {

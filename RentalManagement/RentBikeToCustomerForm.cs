@@ -120,7 +120,7 @@ namespace KiwiBike4Rent.RentalManagement
 
         private void dgvAddDeposit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 String deposit = dgvShowBikes.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtDeposit.Text = deposit;
