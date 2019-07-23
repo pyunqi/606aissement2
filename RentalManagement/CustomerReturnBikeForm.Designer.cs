@@ -77,6 +77,7 @@
             this.btnClose.TabIndex = 47;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dgvShowRentals
             // 
@@ -185,6 +186,7 @@
             // 
             // txtHiredPrice
             // 
+            this.txtHiredPrice.Enabled = false;
             this.txtHiredPrice.Location = new System.Drawing.Point(93, 127);
             this.txtHiredPrice.Name = "txtHiredPrice";
             this.txtHiredPrice.Size = new System.Drawing.Size(98, 20);
@@ -237,6 +239,7 @@
             // 
             // txtFine
             // 
+            this.txtFine.Enabled = false;
             this.txtFine.Location = new System.Drawing.Point(93, 179);
             this.txtFine.Name = "txtFine";
             this.txtFine.Size = new System.Drawing.Size(98, 20);

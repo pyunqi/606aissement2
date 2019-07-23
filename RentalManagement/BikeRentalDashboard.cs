@@ -30,7 +30,7 @@ namespace KiwiBike4Rent.RentalManagement
 
         private void RentBikeDashboard_Load(object sender, EventArgs e)
         {
-            //load all customers from database
+            
         }
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
@@ -145,5 +145,9 @@ namespace KiwiBike4Rent.RentalManagement
             return cID;
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -42,6 +42,7 @@
             this.btnRentBike = new System.Windows.Forms.Button();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnReturnBike = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
@@ -141,7 +142,7 @@
             // 
             // btnSearchCustomer
             // 
-            this.btnSearchCustomer.Location = new System.Drawing.Point(18, 154);
+            this.btnSearchCustomer.Location = new System.Drawing.Point(18, 130);
             this.btnSearchCustomer.Name = "btnSearchCustomer";
             this.btnSearchCustomer.Size = new System.Drawing.Size(138, 29);
             this.btnSearchCustomer.TabIndex = 6;
@@ -151,7 +152,7 @@
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(18, 189);
+            this.btnAddCustomer.Location = new System.Drawing.Point(18, 165);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(138, 29);
             this.btnAddCustomer.TabIndex = 6;
@@ -161,7 +162,7 @@
             // 
             // btnRentBike
             // 
-            this.btnRentBike.Location = new System.Drawing.Point(18, 258);
+            this.btnRentBike.Location = new System.Drawing.Point(18, 234);
             this.btnRentBike.Name = "btnRentBike";
             this.btnRentBike.Size = new System.Drawing.Size(138, 29);
             this.btnRentBike.TabIndex = 6;
@@ -171,7 +172,7 @@
             // 
             // btnUpdateCustomer
             // 
-            this.btnUpdateCustomer.Location = new System.Drawing.Point(18, 223);
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(18, 199);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
             this.btnUpdateCustomer.Size = new System.Drawing.Size(138, 29);
             this.btnUpdateCustomer.TabIndex = 6;
@@ -181,7 +182,7 @@
             // 
             // btnReturnBike
             // 
-            this.btnReturnBike.Location = new System.Drawing.Point(18, 293);
+            this.btnReturnBike.Location = new System.Drawing.Point(18, 269);
             this.btnReturnBike.Name = "btnReturnBike";
             this.btnReturnBike.Size = new System.Drawing.Size(138, 29);
             this.btnReturnBike.TabIndex = 6;
@@ -189,11 +190,22 @@
             this.btnReturnBike.UseVisualStyleBackColor = true;
             this.btnReturnBike.Click += new System.EventHandler(this.btnReturnBike_Click);
             // 
-            // RentBikeDashboard
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(18, 304);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(138, 41);
+            this.btnClose.TabIndex = 48;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // BikeRentalDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 357);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReturnBike);
             this.Controls.Add(this.btnRentBike);
             this.Controls.Add(this.btnUpdateCustomer);
@@ -205,7 +217,7 @@
             this.Controls.Add(this.txtCustomerID);
             this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.groupBox1);
-            this.Name = "RentBikeDashboard";
+            this.Name = "BikeRentalDashboard";
             this.Text = "BikeRentalDashboard";
             this.Load += new System.EventHandler(this.RentBikeDashboard_Load);
             this.groupBox1.ResumeLayout(false);
@@ -232,5 +244,6 @@
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnReturnBike;
         private System.Windows.Forms.RadioButton rbAll;
+        private System.Windows.Forms.Button btnClose;
     }
 }
