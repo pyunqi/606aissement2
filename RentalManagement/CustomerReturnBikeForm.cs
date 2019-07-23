@@ -85,7 +85,7 @@ namespace KiwiBike4Rent.RentalManagement
             //cauculate return deposit or need to pay how much
             int totalPrice = -1;
             Int32.TryParse(txtTotal.Text, out totalPrice);
-            if(totalPrice <= 0)
+            if(totalPrice < 0)
             {
                 MessageBox.Show("Total price must be a number and greater than or equal 0!","Wrong Input",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
@@ -154,11 +154,6 @@ namespace KiwiBike4Rent.RentalManagement
                 txtFine.Text = fine.ToString();
                 txtTotal.Text = (hiredPrice + fine).ToString();
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

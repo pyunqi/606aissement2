@@ -182,7 +182,6 @@
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 57;
             this.label2.Text = "Hire Priced:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtHiredPrice
             // 
@@ -218,7 +217,6 @@
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 57;
             this.label4.Text = "Total Price:";
-            this.label4.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtTotal
             // 
@@ -235,7 +233,6 @@
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 57;
             this.label8.Text = "Fine:";
-            this.label8.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtFine
             // 

@@ -77,6 +77,11 @@ namespace KiwiBike4Rent.RentalManagement
 
         private void RentBikeToCustomerForm_Load(object sender, EventArgs e)
         {
+            loadAvalibleBikes();
+        }
+
+        private void loadAvalibleBikes()
+        {
             using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
             {
                 CUSTOMER customer = kiwiBike4RentEntities.CUSTOMERs.Where(c => c.CustomerID == customerID).SingleOrDefault();
@@ -198,6 +203,7 @@ namespace KiwiBike4Rent.RentalManagement
             }
             else
             {
+                loadAvalibleBikes();
                 txtDays.Clear();
                 txtDeposit.Clear();
             }
