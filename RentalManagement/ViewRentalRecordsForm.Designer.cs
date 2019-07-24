@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSearchRentals = new System.Windows.Forms.Button();
+            this.btnSearchRentedBikes = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.dgvRentals = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.BtnShowOverDueBikes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentals)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSearchRentals
+            // btnSearchRentedBikes
             // 
-            this.btnSearchRentals.Location = new System.Drawing.Point(22, 172);
-            this.btnSearchRentals.Name = "btnSearchRentals";
-            this.btnSearchRentals.Size = new System.Drawing.Size(138, 29);
-            this.btnSearchRentals.TabIndex = 17;
-            this.btnSearchRentals.Text = "Search";
-            this.btnSearchRentals.UseVisualStyleBackColor = true;
-            this.btnSearchRentals.Click += new System.EventHandler(this.btnSearchRentals_Click);
+            this.btnSearchRentedBikes.Location = new System.Drawing.Point(22, 136);
+            this.btnSearchRentedBikes.Name = "btnSearchRentedBikes";
+            this.btnSearchRentedBikes.Size = new System.Drawing.Size(138, 29);
+            this.btnSearchRentedBikes.TabIndex = 17;
+            this.btnSearchRentedBikes.Text = "SearchRentedBikes";
+            this.btnSearchRentedBikes.UseVisualStyleBackColor = true;
+            this.btnSearchRentedBikes.Click += new System.EventHandler(this.btnSearchRentals_Click);
             // 
             // label1
             // 
@@ -55,12 +56,12 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "CustomerID";
             // 
-            // textBox1
+            // txtCustomerID
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 85);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtCustomerID.Location = new System.Drawing.Point(87, 85);
+            this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomerID.TabIndex = 9;
             // 
             // dgvRentals
             // 
@@ -81,6 +82,17 @@
             this.btnClose.TabIndex = 48;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // BtnShowOverDueBikes
+            // 
+            this.BtnShowOverDueBikes.Location = new System.Drawing.Point(22, 182);
+            this.BtnShowOverDueBikes.Name = "BtnShowOverDueBikes";
+            this.BtnShowOverDueBikes.Size = new System.Drawing.Size(138, 29);
+            this.BtnShowOverDueBikes.TabIndex = 17;
+            this.BtnShowOverDueBikes.Text = "ShowOverDueBikes";
+            this.BtnShowOverDueBikes.UseVisualStyleBackColor = true;
+            this.BtnShowOverDueBikes.Click += new System.EventHandler(this.BtnShowOverDueBikes_Click);
             // 
             // ViewRentalRecordsForm
             // 
@@ -88,9 +100,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 347);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnSearchRentals);
+            this.Controls.Add(this.BtnShowOverDueBikes);
+            this.Controls.Add(this.btnSearchRentedBikes);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCustomerID);
             this.Controls.Add(this.dgvRentals);
             this.Name = "ViewRentalRecordsForm";
             this.Text = "ViewRentalRecordsForm";
@@ -102,10 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnSearchRentals;
+        private System.Windows.Forms.Button btnSearchRentedBikes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.DataGridView dgvRentals;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button BtnShowOverDueBikes;
     }
 }

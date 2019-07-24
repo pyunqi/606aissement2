@@ -121,6 +121,7 @@ namespace KiwiBike4Rent.RentalManagement
                     txtOverDueDays.Clear();
                     txtRentalPrice.Clear();
                     txtTotal.Clear();
+                    lboxStatus.ResetText();
                     loadRentals();
                 }
             }else if (DialogResult.No == result)
