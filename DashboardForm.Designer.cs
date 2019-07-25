@@ -116,6 +116,7 @@
             this.btnManageRentals.TabIndex = 7;
             this.btnManageRentals.Text = "Manage Rentals";
             this.btnManageRentals.UseVisualStyleBackColor = true;
+            this.btnManageRentals.Click += new System.EventHandler(this.btnManageRentals_Click);
             // 
             // Dashboard
             // 

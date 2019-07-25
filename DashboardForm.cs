@@ -106,5 +106,11 @@ namespace KiwiBike4Rent
             RentalManagement.ViewRentalRecordsForm viewRentalRecordsForm = new RentalManagement.ViewRentalRecordsForm();
             viewRentalRecordsForm.ShowDialog();
         }
+
+        private void btnManageRentals_Click(object sender, EventArgs e)
+        {
+            RentalManagement.ManageRentalRecords manageRentalRecords = new RentalManagement.ManageRentalRecords();
+            manageRentalRecords.ShowDialog();
+        }
     }
 }

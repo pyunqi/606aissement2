@@ -31,7 +31,6 @@ namespace KiwiBike4Rent.RentalManagement
                 else
                 {
                     //show  all rental records in  RENTAL 
-                    String rented = Constants.status[1];
                     var rentals = from allRentals in kiwiBike4RentEntities.RENTALs.Include("BIKEs")
                                   .Include("CUSTOMERs").Include("STAFFs")
                                   .Where(r => r.CustomerID == customerID)
