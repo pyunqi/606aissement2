@@ -61,6 +61,7 @@
             this.btnAllOverdueBikes.TabIndex = 52;
             this.btnAllOverdueBikes.Text = "View all overdue rented bikes";
             this.btnAllOverdueBikes.UseVisualStyleBackColor = true;
+            this.btnAllOverdueBikes.Click += new System.EventHandler(this.btnAllOverdueBikes_Click);
             // 
             // btnAllRentedBikes
             // 
@@ -80,7 +81,7 @@
             this.dgvBikeRentals.Location = new System.Drawing.Point(209, 12);
             this.dgvBikeRentals.Name = "dgvBikeRentals";
             this.dgvBikeRentals.ReadOnly = true;
-            this.dgvBikeRentals.Size = new System.Drawing.Size(703, 362);
+            this.dgvBikeRentals.Size = new System.Drawing.Size(703, 322);
             this.dgvBikeRentals.TabIndex = 49;
             // 
             // groupBox1
@@ -145,6 +146,7 @@
             this.btnLeast.TabIndex = 56;
             this.btnLeast.Text = "View Least 5 Rented Bikes";
             this.btnLeast.UseVisualStyleBackColor = true;
+            this.btnLeast.Click += new System.EventHandler(this.btnLeast_Click);
             // 
             // btnGenerateReport
             // 
