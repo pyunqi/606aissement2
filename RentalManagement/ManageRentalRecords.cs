@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.IO;
 
 namespace KiwiBike4Rent.RentalManagement
 {
@@ -120,9 +121,10 @@ namespace KiwiBike4Rent.RentalManagement
                 var rentalsGroupBy = kiwiBike4RentEntities.RENTALs.Include("BIKEs")
                         .Include("CUSTOMERs").Include("STAFFs").GroupBy(r => r.BikeID)
                     .Select(g => new { BikeID = g.Key, count = g.Count() });
-                if (Descend == 1) {
+                if (Descend == 1)
+                {
 
-                    rentalsGroupBy =  rentalsGroupBy.OrderByDescending(g => g.count);
+                    rentalsGroupBy = rentalsGroupBy.OrderByDescending(g => g.count);
                 }
                 else
                 {
@@ -193,6 +195,74 @@ namespace KiwiBike4Rent.RentalManagement
             }
         }
 
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Generate a report of rented bikes by category!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StringBuilder csvString = new StringBuilder();
+            using (KiwiBike4RentEntities kiwiBike4RentEntities = new KiwiBike4RentEntities())
+            {
+                //show  all rental records in  RENTAL 
+                var rentals = from allRentals in kiwiBike4RentEntities.RENTALs.Include("BIKEs")
+                                 .Include("CUSTOMERs").Include("STAFFs")
+                              select new
+                              {
+                                  allRentals.RentalID,
+                                  CustomerName = allRentals.CUSTOMER.Name,
+                                  allRentals.BIKE.BikeID,
+                                  allRentals.StartDate,
+                                  allRentals.EndDate,
+                                  allRentals.ReturnDate,
+                                  allRentals.BIKE.MODEL1.Brand,
+                                  allRentals.BIKE.MODEL1.Category,
+                                  allRentals.BIKE.MODEL1.Dimension,
+                                  allRentals.BIKE.MODEL1.Weight,
+                                  allRentals.BIKE.MODEL1.ModelID,
+                                  allRentals.BIKE.ManufacturedYear,
+                                  allRentals.BIKE.LifeTime,
+                                  allRentals.BIKE.Status,
+                                  allRentals.Deposit,
+                                  allRentals.Fine,
+                                  allRentals.HirePrice,
+                              };
+                var results = rentals.OrderBy(r => r.Category);
 
+                Boolean flag = true;
+                foreach (var v in rentals.ToList())
+                {
+                    if (flag)
+                    {
+                        csvString.Append("RentalID,CustomerName,BikeID,StartDate" +
+                            ",EndDate,ReturnDate,Brand,Category,Dimension,Weight" +
+                            ",ModelID,ManufacturedYear,LifeTime,Deposit,Fine,HirePrice");
+                        flag = false;
+                    }
+                    csvString.Append("\n").Append(v.RentalID).Append(",").Append(v.CustomerName)
+                        .Append(",").Append(v.BikeID).Append(",").Append(v.StartDate)
+                        .Append(",").Append(v.EndDate).Append(",").Append(v.ReturnDate)
+                        .Append(",").Append(v.Brand).Append(",").Append(v.Category)
+                        .Append(",").Append(v.Dimension).Append(",").Append(v.Weight)
+                        .Append(",").Append(v.ModelID).Append(",").Append(v.ManufacturedYear)
+                        .Append(",").Append(v.LifeTime).Append(",").Append(v.Deposit)
+                        .Append(",").Append(v.Fine).Append(",").Append(v.HirePrice);
+                }
+            }// Displays a SaveFileDialog so the user can save the Image  
+             // assigned to Button2.  
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "CSV |*.csv";
+            saveFileDialog1.Title = "Save an csv File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.  
+            if (saveFileDialog1.FileName != "")
+            {
+                using (
+                StreamWriter writer = new StreamWriter(new FileStream(saveFileDialog1.FileName,
+            FileMode.Create, FileAccess.Write)))
+                {
+                    writer.WriteLine(csvString.ToString());
+                }
+            }
+        }
     }
+
 }
