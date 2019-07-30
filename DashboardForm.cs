@@ -77,6 +77,7 @@ namespace KiwiBike4Rent
             {
                 btnUserManage.Enabled = false;
                 btnManageBikes.Enabled = false;
+                btnManageRentals.Enabled = false;
             }
             else if ("management".Equals(role))
             {
