@@ -203,7 +203,7 @@ namespace KiwiBike4Rent.RentalManagement
             {
                 //show  all rental records in  RENTAL 
                 var rentals = from allRentals in kiwiBike4RentEntities.RENTALs.Include("BIKEs")
-                                 .Include("CUSTOMERs").Include("STAFFs")
+                                 .Include("CUSTOMERs").Include("STAFFs").OrderBy(r => r.BIKE.MODEL1.Category)
                               select new
                               {
                                   allRentals.RentalID,
@@ -224,7 +224,6 @@ namespace KiwiBike4Rent.RentalManagement
                                   allRentals.Fine,
                                   allRentals.HirePrice,
                               };
-                var results = rentals.OrderBy(r => r.Category);
 
                 Boolean flag = true;
                 foreach (var v in rentals.ToList())

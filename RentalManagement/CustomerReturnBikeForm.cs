@@ -137,6 +137,7 @@ namespace KiwiBike4Rent.RentalManagement
         {
             if (e.RowIndex >= 0)
             {
+                dgvShowRentals.Rows[e.RowIndex].Selected = true;
                 DataGridViewCellCollection cells = dgvShowRentals.Rows[e.RowIndex].Cells;
                 txtDeposit.Text = cells[3].Value.ToString();
                 int factDays = System.DateTime.Now.Subtract(Convert.ToDateTime(cells[7].Value.ToString())).Days;

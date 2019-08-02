@@ -127,6 +127,7 @@ namespace KiwiBike4Rent.RentalManagement
         {
             if (e.RowIndex >= 0)
             {
+                dgvShowBikes.Rows[e.RowIndex].Selected = true;
                 String deposit = dgvShowBikes.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtDeposit.Text = deposit;
             }
